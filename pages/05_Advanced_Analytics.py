@@ -217,7 +217,7 @@ with tab3:
             z=corr_matrix.values,
             x=corr_matrix.columns,
             y=corr_matrix.index,
-            colorscale='RdBu',
+            colorscale='Blues',
             zmid=0
         )
     )
