@@ -224,7 +224,8 @@ with tab3:
             x=corr_matrix.columns,
             y=corr_matrix.index,
             colorscale='RdBu',
-            zmid=0
+            zmin=0.85,
+            zmax=1,
         )
     )
 
