@@ -206,7 +206,7 @@ with tab3:
         index='month',
         columns='pincode',
         values='bio_load'
-    ).fillna(method='ffill')
+    ).ffill()
 
     # Correlation matrix
     corr_matrix = corr_data.corr()
