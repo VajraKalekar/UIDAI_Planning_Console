@@ -149,6 +149,7 @@ with tab2:
         y='sum',
         size='std',
         color='cluster',
+        color_continuous_scale='Blues',  # ✅ correct place
         hover_data=['pincode'],
         title="Pincode Clustering: Load Characteristics",
         labels={
@@ -160,8 +161,7 @@ with tab2:
 
     fig_cluster.update_layout(
         height=400,
-        template='plotly_dark',
-        colorscale='Blues'
+        template='plotly_dark'
     )
 
     st.plotly_chart(fig_cluster, use_container_width=True)
