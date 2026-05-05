@@ -25,7 +25,13 @@ def load_data():
         for pincode in pincodes:
             base = 50 if pincode in ['500001', '500013'] else 30
             seasonal = 20 * np.sin(month.month * 2 * np.pi / 12)
-            noise = np.random.normal(0, 5)
+            # add pincode-specific behavior
+            pincode_factor = int(pincode[-2:]) / 100  # small variation per pincode
+
+            seasonal = 20 * np.sin((month.month + pincode_factor * 5) * 2 * np.pi / 12)
+            noise = np.random.normal(0, 8 + pincode_factor * 5)
+
+            spike = (80 + pincode_factor * 40) if month.month in [3, 8] else 0
             spike = 100 if month.month in [3, 8] else 0
             load = max(10, base + seasonal + noise + spike)
 
@@ -217,7 +223,7 @@ with tab3:
             z=corr_matrix.values,
             x=corr_matrix.columns,
             y=corr_matrix.index,
-            colorscale='Blues',
+            colorscale='RdBu',
             zmid=0
         )
     )
